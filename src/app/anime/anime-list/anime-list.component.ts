@@ -11,15 +11,15 @@ export class AnimeListComponent implements OnInit {
   selectedBAnime!: Anime;
   selected = false;
   animes: Array<Anime> = [];
-  totalEpisodios = 0; // Almacena el total de episodios
-  ratingPromedio = 0; // Almacena el promedio de ratings
+  totalEpisodios = 0; 
+  ratingPromedio = 0;
 
   constructor(private animeService: AnimeService) { }
 
   getAnimes(): void {
     this.animeService.getAnimes().subscribe((animes) => {
       this.animes = animes;
-      this.calcularEpyRat(); // Llamar al cálculo tras cargar los animes
+      this.calcularEpyRat();
     });
   }
 
@@ -30,7 +30,6 @@ export class AnimeListComponent implements OnInit {
     this.animes.forEach((anime) => {
       totalEpisodiosTemp += anime.episode;
 
-      // Convertimos el rating a número, manejando posibles errores de conversión
       const ratingNumerico = parseFloat(anime.Rating);
       if (!isNaN(ratingNumerico)) {
         totalRatingTemp += ratingNumerico;
@@ -40,7 +39,7 @@ export class AnimeListComponent implements OnInit {
     this.totalEpisodios = totalEpisodiosTemp;
     this.ratingPromedio = this.animes.length > 0 
       ? totalRatingTemp / this.animes.length 
-      : 0; // Manejar división por cero
+      : 0; 
   }
 
   onSelected(anime: Anime): void {

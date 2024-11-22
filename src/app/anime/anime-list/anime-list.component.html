@@ -15,9 +15,10 @@
         <div class="card-body">
           <h5 class="card-title">{{ anime.name }}</h5>
           <p>⭐ {{ anime.Rating }} <br> <b>Categorías:</b> {{ anime.categorie }}</p>
-          <a href="#" class="btn btn-primary" (click)="onSelected(anime)">Más información</a>
+          <a [routerLink]="['/anime', anime.id]" class="btn btn-primary">More Information</a>
         </div>
       </div>
+      
     </div>
   </div>
 </div>
